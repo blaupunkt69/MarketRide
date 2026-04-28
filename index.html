@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MarketRide</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div id="app">
+      <canvas id="gameCanvas" width="1280" height="720"></canvas>
+
+      <div id="menuOverlay" class="overlay visible">
+        <div class="panel">
+          <h1>MarketRide</h1>
+          <p class="subtitle">Flappy cadence meets stock-chart hills.</p>
+
+          <label>
+            Stock symbol
+            <input id="symbolInput" type="text" value="AAPL" maxlength="10" />
+          </label>
+
+          <label>
+            Timeframe
+            <select id="timeframeSelect">
+              <option value="5Y">5Y</option>
+              <option value="1Y" selected>1Y</option>
+              <option value="1M">1M</option>
+              <option value="1W">1W</option>
+            </select>
+          </label>
+
+          <label>
+            Difficulty
+            <select id="difficultySelect">
+              <option value="easy">Easy</option>
+              <option value="normal" selected>Normal</option>
+              <option value="hard">Hard</option>
+            </select>
+          </label>
+
+          <label>
+            Data source
+            <select id="dataSourceSelect">
+              <option value="demo" selected>Demo (offline)</option>
+              <option value="live">Live (if available)</option>
+            </select>
+          </label>
+
+          <button id="startBtn">Start Ride</button>
+          <p class="note">If Live fails (CORS/API), auto-fallback to Demo.</p>
+        </div>
+      </div>
+
+      <div id="loadingOverlay" class="overlay">
+        <div class="panel compact">Loading terrain...</div>
+      </div>
+
+      <div id="resultOverlay" class="overlay">
+        <div class="panel">
+          <h2 id="resultTitle">Result</h2>
+          <p id="resultStats"></p>
+          <button id="restartBtn">Ride Again</button>
+        </div>
+      </div>
+
+      <div id="pauseBadge" class="badge">Paused (Esc)</div>
+    </div>
+
+    <script type="module" src="src/game.js"></script>
+  </body>
+</html>
